@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <h1>Moving Pizza </h1>
+
+
+
+    <button onclick="moveup()">UP</button>
+    <button onclick="movedown()">DOWN</button>
+    <button onclick="moveleft()">LEFT</button>
+    <button onclick="moveright()">RIGHT</button>
+
+    <img id="Pizza" style=padding:10px;width:80px;height:100px src="pizza.png" alt="Pizza Slice">
+
+
+    <script>
+        var X = 100
+        var Y = 150
+
+        function moveup() {
+            Y = Y - 10;
+            document.getElementById("Pizza").style.top = Y + "px";
+        }
+
+        function movedown() {
+            Y = Y + 10;
+            document.getElementById("Pizza").style.top = Y + "px";
+        }
+
+        function moveleft() {
+            X = X - 10;
+            document.getElementById("Pizza").style.left = X + "px";
+        }
+
+        function moveright() {
+            X = X + 10;
+            document.getElementById("Pizza").style.left = X + "px";
+        }
+        document.getElementById("Pizza").style.position = "fixed";
+        document.getElementById("Pizza").style.top = "150px";
+        document.getElementById("Pizza").style.left = "100px";
+    </script>
+
+</body>
+
+</html>
