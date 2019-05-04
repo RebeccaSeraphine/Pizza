@@ -7,10 +7,10 @@
 
 
 
-    <button onclick="moveup()">UP</button>
-    <button onclick="movedown()">DOWN</button>
-    <button onclick="moveleft()">LEFT</button>
-    <button onclick="moveright()">RIGHT</button>
+    <button onmousedown="moveup('go')" onmouseup="moveup('stop')">↑</button>
+    <button onmousedown="movedown()">↓</button>
+    <button onmousedown="moveleft()">←</button>
+    <button onmousedown="moveright()">→</button>
 
     <img id="Pizza" style="padding:10px;width:80px;height:100px;border:1px solid green" src="pizza.png" alt="Pizza Slice">
 
@@ -26,13 +26,33 @@
         var R_Y = 120
         var R_W = 200
         var R_H = 200
+        var timer
 
-        function moveup() {
-            if (P_Y <= R_Y) {
+        function moveup(startstop) {
+            console.log("why????")
+
+            if (startstop == "stop") {
+                clearInterval(timer)
+                console.log("stop")
                 return
             }
+
+            if (startstop == "go") {
+                timer = setInterval(moveup, 100)
+                console.log("go")
+            }
+
+            if (P_Y <= R_Y) {
+                console.log("frame");
+                return
+            }
+
+
             P_Y = P_Y - 10;
             document.getElementById("Pizza").style.top = P_Y + "px";
+            console.log("unten angekommehn");
+
+
         }
 
         function moveleft() {
@@ -41,6 +61,7 @@
             }
             P_X = P_X - 10;
             document.getElementById("Pizza").style.left = P_X + "px";
+
         }
 
         function movedown() {
