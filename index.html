@@ -12,35 +12,64 @@
     <button onclick="moveleft()">LEFT</button>
     <button onclick="moveright()">RIGHT</button>
 
-    <img id="Pizza" style=padding:10px;width:80px;height:100px src="pizza.png" alt="Pizza Slice">
+    <img id="Pizza" style="padding:10px;width:80px;height:100px;border:1px solid green" src="pizza.png" alt="Pizza Slice">
 
+    <div id="Frame" style="border:1px solid red"></div>
 
     <script>
-        var X = 100
-        var Y = 150
+        var P_X = 100
+        var P_Y = 150
+        var P_W = 50
+        var P_H = 50
+
+        var R_X = 20
+        var R_Y = 120
+        var R_W = 200
+        var R_H = 200
 
         function moveup() {
-            Y = Y - 10;
-            document.getElementById("Pizza").style.top = Y + "px";
-        }
-
-        function movedown() {
-            Y = Y + 10;
-            document.getElementById("Pizza").style.top = Y + "px";
+            if (P_Y <= R_Y) {
+                return
+            }
+            P_Y = P_Y - 10;
+            document.getElementById("Pizza").style.top = P_Y + "px";
         }
 
         function moveleft() {
-            X = X - 10;
-            document.getElementById("Pizza").style.left = X + "px";
+            if (P_X <= R_X) {
+                return
+            }
+            P_X = P_X - 10;
+            document.getElementById("Pizza").style.left = P_X + "px";
+        }
+
+        function movedown() {
+            if (P_Y + P_H >= R_Y + R_H) {
+                return
+            }
+            P_Y = P_Y + 10;
+            document.getElementById("Pizza").style.top = P_Y + "px";
         }
 
         function moveright() {
-            X = X + 10;
-            document.getElementById("Pizza").style.left = X + "px";
+            if (P_X + P_W >= R_X + R_W) {
+                return
+            }
+            P_X = P_X + 10;
+            document.getElementById("Pizza").style.left = P_X + "px";
         }
         document.getElementById("Pizza").style.position = "fixed";
-        document.getElementById("Pizza").style.top = "150px";
-        document.getElementById("Pizza").style.left = "100px";
+        document.getElementById("Pizza").style.padding = "0";
+        document.getElementById("Pizza").style.top = P_Y + "px";
+        document.getElementById("Pizza").style.left = P_X + "px";
+        document.getElementById("Pizza").style.height = P_H + "px";
+        document.getElementById("Pizza").style.width = P_W + "px";
+
+        document.getElementById("Frame").style.position = "fixed";
+        document.getElementById("Frame").style.top = R_Y + "px";
+        document.getElementById("Frame").style.left = R_X + "px";
+        document.getElementById("Frame").style.height = R_H + "px";
+        document.getElementById("Frame").style.width = R_W + "px";
     </script>
 
 </body>
